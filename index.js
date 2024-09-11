@@ -8,13 +8,6 @@ const options = {
   },
 };
 
-// let toggleBtn = document.querySelector(".hamburger-toggle");
-// let popout = document.querySelector(".popout-menu");
-
-// document.addEventListener("click", function(){
-//     document.getElementById("demo").innerHTML = "Hello World";
-//   });
-
 document.addEventListener("DOMContentLoaded", function () {
   const gallery = document.querySelector(".gallery");
 
@@ -120,4 +113,19 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => {
       console.error("Error fetching data:", error);
     });
+});
+
+
+const openBtn = document.querySelector("#open-menu");
+const closeBtn = document.querySelector("#close-menu");
+const popout = document.querySelector(".popout-menu");
+
+console.log(openBtn,popout);
+
+openBtn.addEventListener("click", function(){
+    popout.classList.toggle('active');
+ });
+
+closeBtn.addEventListener("click", function(){
+  popout.classList.toggle('active');
 });
