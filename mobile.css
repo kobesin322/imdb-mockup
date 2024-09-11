@@ -183,13 +183,13 @@
     display: none;
   }
 
-  .mobile_filter_btn {
-    background-color: transparent;
+  .mobile_filterbtn {
     width: 64px;
     height: 38px;
     border-radius: 100px;
     border: 1px solid #fff;
     cursor: pointer;
+    background-color: transparent;
   }
 
   .filter_icon {
