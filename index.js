@@ -1,3 +1,5 @@
+
+//Handle movies fetching
 const url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
 const options = {
   method: "GET",
@@ -15,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((response) => response.json())
     .then((data) => {
       const movies = data.results;
-      console.log(movies);
 
       movies.forEach((movie) => {
         const posterPath = movie.poster_path;
@@ -103,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //For Mobile Description
         const moviePosterWrap = document.createElement("div");
+        moviePosterWrap.classList.add('movie-poster-wrap');
 
         moviePosterWrap.appendChild(moviePoster);
         moviePosterWrap.appendChild(mobileDescription);
@@ -116,11 +118,40 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// Handle Sorting
+const filterBtn = document.querySelector("#filter");
+const mobileFilterBtn = document.querySelector("#mobile-filter");
+
+
+const handleSorting = ()=>{
+  let movies = [...document.querySelectorAll('.movie-poster-wrap')].reverse();
+  let gallery = document.querySelector(".gallery");
+  let main = document.querySelector(".main");
+
+  gallery.remove();
+  let reversedGallery = document.createElement("div");
+  reversedGallery.classList.add("gallery");
+
+  movies.forEach((movie)=>{
+    reversedGallery.appendChild(movie);
+  })
+
+  main.appendChild(reversedGallery);
+   
+}
+
+filterBtn.addEventListener("click", handleSorting);
+mobileFilterBtn.addEventListener("click", handleSorting);
+
+
+
+
+//Handle Toggle Menu
+
 const openBtn = document.querySelector("#open-menu");
 const closeBtn = document.querySelector("#close-menu");
 const popout = document.querySelector(".popout-menu");
 
-console.log(openBtn,popout);
 
 openBtn.addEventListener("click", function(){
     popout.classList.toggle('active');
